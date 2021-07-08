@@ -1,0 +1,14 @@
+MetadataService.MetadataPort metadataservice = new MetadataService.MetadataPort();
+metadataservice.SessionHeader = new MetadataService.SessionHeader_element();
+metadataservice.SessionHeader.sessionId = UserInfo.getSessionId();
+
+MetadataService.ListView listViewObj = new MetadataService.ListView();
+listViewObj.fullName = 'Contact.Test_View996';
+listViewObj.label = 'Test View996';
+listViewObj.filterScope = 'Everything';
+MetadataService.SharedTo tempSharTo = new MetadataService.SharedTo();
+tempSharTo.group_x = new String[]{'publicGroup_api'}; 
+listViewObj.sharedTo =  tempSharTo;
+List<MetadataService.Metadata> metadataList= new List<MetadataService.Metadata>();
+	metadataList.add(listViewObj);
+	metadataservice.updateMetadata(metadataList);

@@ -1,0 +1,12 @@
+MetadataService.MetadataPort metadataservice = new MetadataService.MetadataPort();
+metadataservice.SessionHeader = new MetadataService.SessionHeader_element();
+metadataservice.SessionHeader.sessionId = UserInfo.getSessionId();
+
+MetadataService.ListView listViewObj = new MetadataService.ListView();
+listViewObj.fullName = 'Test_View';
+listViewObj.label = 'Test View';
+listViewObj.filterScope = 'Everything';
+
+List<MetadataService.Metadata> metadataList= new List<MetadataService.Metadata>();
+metadataList.add(listViewObj);
+metadataservice.createMetadata(metadataList);

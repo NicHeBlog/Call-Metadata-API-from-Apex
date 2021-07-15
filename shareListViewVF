@@ -1,4 +1,5 @@
-<apex:page controller="ListViewButtonDemo">
+<apex:page StandardController="Lead" recordSetVar="records" extensions="ListViewButtonDemo">
+<!-- <apex:page controller="ListViewButtonDemo"></apex:page> -->
 	<apex:form >
         <apex:pageBlock title="List View" helpTitle="needHelp?" helpUrl="https://www.google.com">
             <apex:pageBlockTable value="{!listViews}" var="listView">

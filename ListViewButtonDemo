@@ -1,0 +1,37 @@
+public with sharing class ListViewButtonDemo{
+	public List<ListView> listViews {get; set;}
+    public String filterNameId; //comment
+    
+    //comment
+    public ListViewButtonDemo(ApexPages.StandardSetController  stdController) {
+        filterNameId = stdController.getFilterId();
+    }
+    //comment
+
+    public ListViewButtonDemo(){
+        // listViews =[select Id, Name,DeveloperName,sObjectType from ListView where Id = '00B1T000004uhhq3YUAS'];
+        listViews =[select Id, Name, DeveloperName,sObjectType from ListView where Id =:filterNameId];
+    }
+    
+    public List<Group> getSharing(){
+        return new List<Group>();
+    }
+    
+    public Pagereference sharing(){
+        MetadataService.MetadataPort metadataservice = new MetadataService.MetadataPort();
+        metadataservice.SessionHeader = new MetadataService.SessionHeader_element();
+        metadataservice.SessionHeader.sessionId = UserInfo.getSessionId();
+        
+        MetadataService.ListView listViewObj = new MetadataService.ListView();
+        listViewObj.fullName = listViews[0].DeveloperName;//'Lead.ALL_my_open_lead';
+        listViewObj.label = listViews[0].Name;//'ALL My Open Lead';
+        listViewObj.filterScope = 'Everything';
+        MetadataService.SharedTo tempSharTo = new MetadataService.SharedTo();
+        tempSharTo.group_x = new String[]{'publicGroup_API'}; 
+        listViewObj.sharedTo =  tempSharTo;
+        List<MetadataService.Metadata> metadataList= new List<MetadataService.Metadata>();
+        metadataList.add(listViewObj);
+        metadataservice.updateMetadata(metadataList);
+        return new Pagereference('/lightning/o/Lead/list?filterName='+ filterNameId);
+    }
+}

@@ -1,0 +1,26 @@
+<apex:page controller="ListViewButtonDemo">
+	<apex:form >
+        <apex:pageBlock title="List View" helpTitle="needHelp?" helpUrl="https://www.google.com">
+            <apex:pageBlockTable value="{!listViews}" var="listView">
+                <apex:column >
+                    <apex:facet name="header">List View Id</apex:facet>
+                    <apex:outputText value="{!listView.Id}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">List View Name</apex:facet>
+                    <apex:outputText value="{!listView.Name}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">List View API</apex:facet>
+                    <apex:outputText value="{!listView.DeveloperName}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">List View Object</apex:facet>
+                    <apex:outputText value="{!listView.sObjectType}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:commandButton action="{!getSharing}" value="Get Current Sharing" id="getSharingButton"/>
+            <apex:commandButton action="{!sharing}" value="Sharing" id="sharingButton"/>
+        </apex:pageBlock>
+	</apex:form>
+</apex:page>

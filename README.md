@@ -9,8 +9,8 @@
 # implementation propose
 one posibility is to create a Visualforce page to hold the function, 
 when you click button in the vf page, it will trigger system call create/update Metadata function.<br/>
-code : shareListViewVF + ListViewButtonDemo 
-how to dynamically get list view Id from current page? 
---answer: by use visualforce page standard controller function. ----stdController.getFilterId();
+<b>CODE</b> : shareListViewVF + ListViewButtonDemo <br/>
+how to dynamically get list view Id from current page? <br/>
+--answer: by use visualforce page standard controller function. ----stdController.getFilterId();<br/>
 in which filterID is list view Id from sobject list view page
 

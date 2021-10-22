@@ -1,6 +1,6 @@
 public with sharing class ListViewButtonDemo{
 	public List<ListView> listViews {get; set;}
-    public String filterNameId; //comment
+    public String filterNameId; //which is list view id
     
     //comment
     public ListViewButtonDemo(ApexPages.StandardSetController  stdController) {
@@ -10,7 +10,7 @@ public with sharing class ListViewButtonDemo{
 
     public ListViewButtonDemo(){
         // listViews =[select Id, Name,DeveloperName,sObjectType from ListView where Id = '00B1T000004uhhq3YUAS'];
-        listViews =[select Id, Name, DeveloperName,sObjectType from ListView where Id =:filterNameId];
+        listViews =[SELECT Id, Name, DeveloperName,sObjectType FROM ListView WHERE Id =:filterNameId];
     }
     
     public List<Group> getSharing(){
